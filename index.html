@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e95725">
+  <title>Happy Birthday, Riya!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { color-scheme: dark; font-family: "DM Sans", sans-serif; }
+    * { box-sizing: border-box; }
+    body {
+      min-height: 100vh; min-height: 100svh; margin: 0; overflow: hidden; isolation: isolate;
+      display: grid; place-items: center; padding: 28px;
+      color: #fff8f1; background: linear-gradient(135deg, #ffad45 0%, #f06432 48%, #a91f32 100%);
+    }
+    body::before, body::after { content: ""; position: fixed; z-index: -1; border-radius: 50%; filter: blur(2px); opacity: .25; pointer-events: none; }
+    body::before { width: 340px; height: 340px; background: #ffe0a3; top: -130px; left: -90px; }
+    body::after { width: 420px; height: 420px; background: #68152a; right: -160px; bottom: -210px; }
+    .sky { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: -1; }
+    .floaty { position: absolute; bottom: -70px; left: var(--left); font-size: var(--size); opacity: 0; animation: drift var(--duration) linear var(--delay) infinite; filter: drop-shadow(0 5px 10px #542c7340); }
+    @keyframes drift { 0% { transform: translate3d(0, 0, 0) rotate(-12deg) scale(.8); opacity: 0; } 12% { opacity: .78; } 85% { opacity: .7; } 100% { transform: translate3d(var(--sway), -115vh, 0) rotate(22deg) scale(1.12); opacity: 0; } }
+    main { width: min(100%, 760px); position: relative; z-index: 1; }
+    .card {
+      position: relative; overflow: hidden; text-align: center; padding: clamp(34px, 7vw, 68px) clamp(24px, 7vw, 72px);
+      border: 1px solid rgba(255,239,216,.42); border-radius: 30px;
+      background: rgba(111,30,34,.22); box-shadow: 0 24px 80px rgba(87,20,22,.32), inset 0 1px 0 rgba(255,245,226,.2);
+      -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px);
+      animation: arrive 950ms cubic-bezier(.2,.8,.2,1) both;
+    }
+    .card::before { content: ""; position: absolute; inset: 0 0 auto; height: 1px; background: linear-gradient(90deg, transparent, #fff9, transparent); }
+    @keyframes arrive { from { opacity: 0; transform: translateY(24px) scale(.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    .eyebrow { margin: 0 0 16px; font-size: .75rem; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; color: #ffe4bc; }
+    h1 { margin: 0; font-family: "Playfair Display", Georgia, serif; font-size: clamp(2.65rem, 8vw, 5.3rem); line-height: 1.08; letter-spacing: -.045em; text-wrap: balance; text-shadow: 0 0 14px rgba(255,207,130,.65), 0 0 36px rgba(255,113,66,.55), 0 4px 24px rgba(86,19,27,.38); animation: glow 2.8s ease-in-out infinite alternate; }
+    h1 span { color: #ffe0a3; }
+    @keyframes glow { from { filter: brightness(1); text-shadow: 0 0 12px rgba(255,207,130,.5), 0 0 28px rgba(255,113,66,.45), 0 4px 24px rgba(86,19,27,.35); } to { filter: brightness(1.16); text-shadow: 0 0 20px rgba(255,228,164,.85), 0 0 52px rgba(255,126,71,.7), 0 4px 24px rgba(86,19,27,.4); } }
+    .divider { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 25px 0 20px; color: #ffd28f; font-size: 1rem; }
+    .divider::before, .divider::after { content: ""; width: 48px; height: 1px; background: linear-gradient(90deg, transparent, #fff9); }
+    .divider::after { transform: rotate(180deg); }
+    .message { max-width: 530px; margin: 0 auto; font-size: clamp(1rem, 2.5vw, 1.17rem); line-height: 1.8; color: rgba(255,247,238,.94); text-wrap: pretty; }
+    button { margin-top: 32px; min-height: 54px; padding: 0 28px; border: 0; border-radius: 999px; color: #842b26; background: linear-gradient(135deg, #fff2d6, #ffc17b); box-shadow: 0 9px 25px rgba(87,20,22,.28), inset 0 1px 0 white; font: 700 1rem "DM Sans", sans-serif; cursor: pointer; transition: transform .2s ease, box-shadow .2s ease; }
+    button:hover { transform: translateY(-3px); box-shadow: 0 13px 30px rgba(87,20,22,.36), inset 0 1px 0 white; }
+    button:active { transform: translateY(0) scale(.98); }
+    button:focus-visible { outline: 3px solid white; outline-offset: 4px; }
+    .wish { min-height: 1.5em; margin: 13px 0 0; color: #ffe2b8; font-size: .92rem; }
+    .confetti-piece { position: fixed; z-index: 5; top: -18px; left: var(--x); width: var(--size); height: calc(var(--size) * 1.35); border-radius: var(--round); background: var(--color); pointer-events: none; animation: confetti-fall var(--fall) cubic-bezier(.2,.65,.45,1) forwards; }
+    @keyframes confetti-fall { to { transform: translate3d(var(--drift), 110vh, 0) rotate(var(--spin)); opacity: .12; } }
+    @media (max-width: 480px) { body { padding: 18px; } .card { border-radius: 24px; } .eyebrow { letter-spacing: .18em; } button { width: min(100%, 260px); } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; } }
+  </style>
+</head>
+<body>
+  <div class="sky" id="sky" aria-hidden="true"></div>
+  <main>
+    <section class="card" aria-labelledby="birthday-title">
+      <p class="eyebrow">A little celebration for you</p>
+      <h1 id="birthday-title">Happy Birthday<br><span>Riya!</span></h1>
+      <div class="divider" aria-hidden="true">✦</div>
+      <p class="message">To the most amazing person I know - may your day be filled with joy, laughter, and cake! You deserve all the happiness in the world.</p>
+      <button id="wish-button" type="button">Make a Wish <span aria-hidden="true">✨</span></button>
+      <p class="wish" id="wish-message" aria-live="polite"></p>
+    </section>
+  </main>
+  <script>
+    const sky = document.getElementById('sky');
+    const birthdayEmojis = ['🎂', '🎈', '🎁', '⭐', '💖'];
+
+    function addFloatingEmoji() {
+      const emoji = document.createElement('span');
+      emoji.className = 'floaty';
+      emoji.textContent = birthdayEmojis[Math.floor(Math.random() * birthdayEmojis.length)];
+      emoji.style.setProperty('--left', `${Math.random() * 100}%`);
+      emoji.style.setProperty('--size', `${22 + Math.random() * 22}px`);
+      emoji.style.setProperty('--duration', `${9 + Math.random() * 8}s`);
+      emoji.style.setProperty('--delay', `${Math.random() * -8}s`);
+      emoji.style.setProperty('--sway', `${Math.round(Math.random() * 100 - 50)}px`);
+      sky.appendChild(emoji);
+      window.setTimeout(() => emoji.remove(), 18000);
+    }
+    for (let i = 0; i < 12; i++) addFloatingEmoji();
+    window.setInterval(addFloatingEmoji, 1150);
+
+    const colors = ['#fff0a6', '#ff8eb8', '#a7f0ff', '#c8a7ff', '#ffffff', '#92f0bc'];
+    document.getElementById('wish-button').addEventListener('click', () => {
+      const wish = document.getElementById('wish-message');
+      wish.textContent = 'Your wish is on its way! ✨';
+      for (let i = 0; i < 110; i++) {
+        const piece = document.createElement('i');
+        piece.className = 'confetti-piece';
+        piece.setAttribute('aria-hidden', 'true');
+        piece.style.setProperty('--x', `${Math.random() * 100}vw`);
+        piece.style.setProperty('--size', `${6 + Math.random() * 8}px`);
+        piece.style.setProperty('--round', Math.random() > .5 ? '50%' : '2px');
+        piece.style.setProperty('--color', colors[Math.floor(Math.random() * colors.length)]);
+        piece.style.setProperty('--fall', `${2.2 + Math.random() * 2.3}s`);
+        piece.style.setProperty('--drift', `${Math.random() * 220 - 110}px`);
+        piece.style.setProperty('--spin', `${Math.random() * 1080 - 540}deg`);
+        piece.style.animationDelay = `${Math.random() * .55}s`;
+        document.body.appendChild(piece);
+        window.setTimeout(() => piece.remove(), 5200);
+      }
+    });
+  </script>
+</body>
+</html>
